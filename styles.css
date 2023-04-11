@@ -1,9 +1,7 @@
 body{
-
+  background-image: url("bg.png");
 	background-position: center;
-  background-image:url("Name.png");
     background-origin: content-box;
-    background-repeat: no-repeat;
     background-size: cover;
 	  min-height:100vh;
 	  font-family: 'Noto Sans', sans-serif;
@@ -14,7 +12,7 @@ body{
 
 /*styling nav bar*/
 .topnav {
-  background-color:#8b4513;
+  background-color:black;
   overflow: hidden;
   opacity: 0.9;
 
@@ -40,22 +38,6 @@ body{
 }
 
 
-/*styling table*/
-.box{
-	position:absolute;
-	left:50%;
-	top:50%;
-	transform: translate(-50%,-50%);
-  background-color:#8b4513;
-	border-radius:3px;
-	padding:70px 100px;
-  width: 50%;
-  height: 50%;
-  opacity: 0.9;
-  color: aliceblue;
- 
-}
-
 .text-center{
 	color:white;	
 	text-transform:uppercase;
@@ -69,7 +51,7 @@ body{
 /*styling buttom bar*/
 .buttomnav {
 
-    background-color:#8b4513;
+    background-color:black;
     overflow: hidden;
     opacity: 0.9;
     color: white;
@@ -90,6 +72,168 @@ body{
   a{
     float: left;
   }
+
+
+
+ /*styling box2*/
+.box2{
+	position:absolute;
+	left:50%;
+  right: 50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+  background-color:black;
+	border-radius:3px;
+	padding:70px 100px;
+  width: 50%;
+  height: 50%;
+  opacity: 0.9;
+ 
+}
+
+
+
+.text-center2{
+	color:white;	
+	text-transform:uppercase;
+    font-size: 50px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+}
+
+.input-container2{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container2 label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:18px;
+	color:white;	
+	transition: all 0.5s ease-in-out;
+}
+
+.btn{
+	color:white;
+	background-color:#b91907;
+	outline: none;
+  border: 0;
+  color: white;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-left:600px;
+  margin-top: 0px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+}
+
+.input-container2 input{ 
+  border:0;
+  border-bottom:1px solid rgb(165, 4, 4);  
+  background:transparent;
+  width:100%;
+  font-size:18px;
+  color:white;
+  
+}
+
+.input-container2 input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #ad1505;	
+}
+
+
+.input-container2 input:focus ~ label,
+.input-container2 input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+}
+
+
+
+
+.select-container2{
+	position:relative;
+	margin-bottom:25px;
+}
+.select-container2 label{
+	position:relative;
+	top:0px;
+	left:0px;
+	font-size:25px;
+	color:white;	
+	transition: all 0.5s ease-in-out;
+  font-size: 18px;
+}
+
+.select-container2 select{ 
+  border:0;
+  border-bottom:1px solid rgb(165, 4, 4);  
+  background:transparent;
+  width:100%;
+  font-size:18px;
+  color:white;
+  
+}
+
+.select-container2 select:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #ad1505;	
+}
+
+
+.select-container2 select:focus ~ label,
+.select-container2 select:valid ~ label{
+	top:-12px;
+	font-size:12px;
+}
+
+  
+  
+.select-container2 option
+{
+  color: #b91907;
+
+}
+
+
+.text-center3{
+	color:white;	
+	text-transform:uppercase;
+    font-size: 50px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+    margin-top: 640px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  float: left;
+  width: auto;
+  font-size: medium;
+}
+
+.flex-container div {
+  background-color: white;
+  width: auto;
+  margin: 10px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 20px;
+
+}  
+
+
+
+  
 
   
 

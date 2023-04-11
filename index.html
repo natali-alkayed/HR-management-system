@@ -9,31 +9,80 @@
  </head>
  <body>
 
+
+    <header>
     <div class="topnav">
         <a class="active" href="index.html">Home</a>
         <a href="accounting.html">Accounting</a>
       </div>
+    </header>
     
 
       <main>
-      <div class="box">
-      
-           <span class="text-center">HR managment System</span>
-           <script src="app.js"></script>
-         </div>  
+        <div class="box2">
+          <section>
+          <span class="text-center2">HR managment System</span>
+          <form id="employeesForm">
+          <div class="input-container2">
+              <input type="text" id="fullName" name="fullName" required=""/>
+              <label>Full Name:</label>		
+          </div>
+        
+
+          <div class="select-container2">
+            <label> Department: </label>
+            <select id="department" name="department" class="select">
+           
+            <option selected> </option>
+            <option value="1">Administration</option>
+            <option value="2">Marketing</option>
+            <option value="3">Development</option>
+            <option value="4">Finance</option>
+          </select>
+          </div>
+          
+            
+          <div class="select-container2">
+            <label> Level: </label>
+            <select id="level" name="level" class="select">
+            <option selected></option>
+            <option value="1">Junior</option>
+            <option value="2">Mid-Senior</option>
+            <option value="3">Senior</option>
+          </select>
+          </div>
+          
+         
+          <div class="input-container2">		
+              <input type="text" id="image" name="image" required=""/>
+              <label>Image URL:</label>
+          </div>
+
+
+          <button type="submit" class="btn" value="add new employee">submit</button>
+        </div>  
+      </form>	
+    </section> 
+  
+
+    <span class="text-center3"> Employees' list</span>
+    <div class="flex-container">
+      <div><section id="cardSection"></section></div>
+    </div>
+  </div>
       </main>
 
-
+    <footer>
     <div class="buttomnav">
-        <h5>2023 All rights reserved &copy; <a href="#" target="blank" title="#"> <img src="1.png" width="100px"></h5>
-    
+        <h5>2023 All rights reserved &copy;</h5>
    </div>
+  </footer>
 
     
      
-  
-   
-     
+
+
+   <script src="app.js"></script>  
    
  </body>
  </html>
