@@ -1,5 +1,4 @@
 'use strict';
-
 let myForm =document.getElementById("employeesForm");
 let infoSection = document.getElementById('cardSection');
 /////////////////////////////////////////////////////////////////////////////////////
@@ -14,6 +13,7 @@ function EmployeeInfo (FullName,Department,Level,ImageURL)
     this.ImageURL=ImageURL;
     informations.push(this);
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////
 myForm.addEventListener('submit',handleSubmit);
 function handleSubmit(event)
@@ -28,6 +28,8 @@ let newEmployee=new EmployeeInfo(fullName,department,level,image);
 newEmployee.randomID();
 newEmployee.Salary(level);
 newEmployee.render();
+//informations[i].renderTable();
+saveData(informations);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 let EmployeeID=1000;
@@ -35,6 +37,35 @@ EmployeeInfo.prototype.randomID=function()
 {
  this.EmployeeID = EmployeeID++;
 }
+EmployeeInfo.prototype.Salary=function(Level)
+{let tax =0.075;
+
+ if(Level==1 || Level=="Junior")
+ {  let min=1500;
+    let max=2000;
+    let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
+    this.salary=randomSalary-randomSalary*tax;
+ }
+
+ else if(Level==2 || Level=="Mid-Senior")
+ {
+    let min=1000;
+    let max=1500;
+    let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
+    this.salary=randomSalary-randomSalary*tax;
+ }
+
+ else if(Level==3  || Level=="Senior")
+ {
+    let min=500;
+    let max=1000;
+    let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
+    this.salary=randomSalary-randomSalary*tax;
+ }
+ 
+}
+getData();
+
 ///////////////////////////////////////////////////////////////////////////////////////
 EmployeeInfo.prototype.render=function()
 {  
@@ -51,19 +82,19 @@ EmployeeInfo.prototype.render=function()
    infoSection.appendChild(IDEl);
 
    const departmentEl = document.createElement('p');
-   if (this.Department == '1') {
+   if (this.Department == '1' || this.Department == 'Administration') {
       departmentEl.textContent = `Department: Administration`;
       infoSection.appendChild(departmentEl);}
 
-   else if (this.Department == '2') {
+   else if (this.Department == '2' || this.Department == 'Marketing') {
       departmentEl.textContent = `Department: Marketing`;
       infoSection.appendChild(departmentEl);}
 
-   else if (this.Department == '3') {
+   else if (this.Department == '3' || this.Department == 'Development') {
       departmentEl.textContent = `Department: Development`;
       infoSection.appendChild(departmentEl);}
 
-   else if (this.Department == '4') {
+   else if (this.Department == '4' || this.Department == 'Finance') {
       departmentEl.textContent = `Department: Finance`;
       infoSection.appendChild(departmentEl);}
    
@@ -85,18 +116,19 @@ EmployeeInfo.prototype.render=function()
    salaryEl.textContent = `Salary: ${this.salary} `
    infoSection.appendChild(salaryEl);
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 EmployeeInfo.prototype.Salary=function(Level)
 {let tax =0.075;
 
- if(Level==1)
+ if(Level==1 || Level=="Junior")
  {  let min=1500;
     let max=2000;
     let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
     this.salary=randomSalary-randomSalary*tax;
  }
 
- else if(Level==2)
+ else if(Level==2 || Level=="Mid-Senior")
  {
     let min=1000;
     let max=1500;
@@ -104,7 +136,7 @@ EmployeeInfo.prototype.Salary=function(Level)
     this.salary=randomSalary-randomSalary*tax;
  }
 
- else if(Level==3)
+ else if(Level==3  || Level=="Senior")
  {
     let min=500;
     let max=1000;
@@ -121,4 +153,48 @@ for (let i = 0; i < informations.length; i++) {
 }
 console.log(informations);
 ///////////////////////////////////////////////////////////////////////////////////////////////
+function saveData(data) {
+   let stringifyData = JSON.stringify(data);
+   localStorage.setItem("Employee", stringifyData);
+}
+///////////////////////////////////////////////////////////////////////////////////////////////
+function getData() {
+   let retrievedData = localStorage.getItem("Employee");
+   let arrayData = JSON.parse(retrievedData);
+   console.log(arrayData);
+   if (arrayData != null) {
+
+       for (let i = 0; i < arrayData.length; i++) {
+           new EmployeeInfo(arrayData[i].FullName, arrayData[i].Department, arrayData[i].Level, arrayData[i].ImageURL);
+           informations[i].randomID();
+           informations[i].Salary(informations[i].level);
+           //informations[i].render();
+          //informations[i].renderTable();
+          
+       }
+   }
+   console.log(informations);
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/*let employee1=new EmployeeInfo(1000,"Ghazi Samer","Administration","Senior");
+let employee2=new EmployeeInfo(1001,"Lana Ali","Finance","Senior");
+employee2.Salary(employee2.Level);
+
+let employee3=new EmployeeInfo(1002,"Tamara Ayoub","Marketing","Senior");
+employee3.Salary(employee3.Level);
+
+let employee4=new EmployeeInfo(1003,"Safi Walid","Administration","Mid-Senior");
+employee4.Salary(employee4.Level);
+
+let employee5=new EmployeeInfo(1004,"Omar Zaid","Development","Senior");
+employee5.Salary(employee5.Level);
+
+let employee6=new EmployeeInfo(1005,"Rana Saleh","Development","Junior");
+employee6.Salary(employee6.Level);
+
+let employee7=new EmployeeInfo(1006,"Hadi Ahmad","Finance","Mide-Senior");
+employee7.Salary(employee7.Level);*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
