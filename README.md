@@ -10,3 +10,9 @@
 ###### create prototype for render function that render all information foe each employee dynamically. 
 ###### let user to input the information in the form.
 ###### create afunction to generate id number for each employee.
+
+
+## lab 9
+##### create new js file to compute some calculations and fill it in the table.
+##### save data in local storage to protect them after refresh the page.
+##### get data from local storage and use it in some calculations.

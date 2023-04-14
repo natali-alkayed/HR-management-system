@@ -1,107 +1,175 @@
 'use strict';
-getData();
-let tableEl = document.getElementById('departmentTable');
+let retrievedData=JSON.parse(localStorage.getItem('Employee'));
+console.log(retrievedData);
 //////////////////////////////////////////////////////////////////////////////////////////
-let totalAdministration=0;
-let salaryAdministration=0;
-let avgAdmin=0;
 
+let totalAdministration=0;
+let numberAdministration=0;
 
 let totalMarketing =0;
-let salaryMarketing=0;
-let avgMaket=0;
-
+let numberMarketing=0;
 
 let totalDev=0;
-let salaryDevelopment=0;
-let avgDev=0;
-
-
+let numberDevelopment=0;
 
 let totalFinance=0;
-let salarFinance=0;
-let avgFin=0;
+let numberFinance=0;
 
 let nummberAll=0;
 let totalSalary =0;
 let avgSalary =0;
 
-
- function numberofEmployess(informations) 
+let depName="";
+ function EmployessTable(informations) 
  {
    for(let i=0;i<informations.length;i++)
    {
       if (informations[i].Department == '1' || informations[i].Department == 'Administration')
-      { salaryAdministration+=1;
-        totalAdministration+=informations[i].salary;
+      { numberAdministration+=1;
+        totalAdministration+=informations[i].salary; 
+        depName="Administration";
         
-        
-    }
+      }
 
       else if (informations[i].Department == '2' || informations[i].Department == 'Marketing')
       {
-       salaryMarketing=+1;
+       numberMarketing=+1;
        totalMarketing+=informations[i].salary;
-       
-       }
+       depName="Marketing";
+      }
         
    
       else if (informations[i].Department == '3' || informations[i].Department == 'Development')
       {
-       salaryMarketing+=1;
+       numberDevelopment+=1;
        totalDev+=informations[i].salary;
-      
-       }
+       depName="Development";
+      }
       
    
       else if (informations[i].Department == '4' || informations[i].Department == 'Finance')
       { 
-        salarFinance+=1;
+        numberFinance+=1;
         totalFinance+=informations[i].salary;
-        
-        }
-         
+        depName="Finance";
+      }    
+      renderTable(depName);
+
+      
    }
-   avgAdmin=totalAdministration/salaryAdministration;
-   avgMaket=totalMarketing/salaryMarketing;
-   avgDev=totalDev/salaryDevelopment;
-   avgFin=totalFinance/salarFinance;
-}
-
-   nummberAll =salaryAdministration+salaryMarketing+salaryDevelopment+salarFinance;
-   totalSalary=totalMarketing+totalDev+totalAdministration+totalFinance;
-   avgSalary=totalSalary/nummberAll
-///////////////////////////////////////////////////////////////////////////////////////////////
-function renderTable ()
-{
-    let trEl = document.createElement('tr');
-    tableEl.appendChild(trEl);
-    console.log(tableEl);
- 
-
-    let numberEl = document.createElement('td');
-    numberEl.textContent =numberofEmployes(this.Department);
-    trEl.appendChild(numberEl);
+  
+  
 
 }
-///////////////////////////////////////////////////////////////////////////////////////////////
-/*EmployeeInfo.prototype.renderTable = function () 
-{
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+EmployessTable(retrievedData);
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+function renderTable (depName)
+{ 
+  
+  if(depName=="Administration")
+  {
+    let tableEl = document.getElementById('Administration');
     let trEl = document.createElement('tr');
     tableEl.appendChild(trEl);
- 
 
     let numberEl = document.createElement('td');
-    numberEl.textContent =numberofEmployes(this.Department);
+    numberEl.textContent =`Number of employess = ${numberAdministration}`;
     trEl.appendChild(numberEl);
- 
-    /*let numberEl = document.createElement('td');
-    numberEl.textContent = this.FullName;
+  
+    
+    let salaryEl = document.createElement('td');
+    salaryEl.textContent =`Total salary = ${totalAdministration}`;
+    trEl.appendChild(salaryEl);
+  
+    let avgEl = document.createElement('td');
+    avgEl.textContent =`Average salary = ${totalAdministration/numberAdministration}`;
+    trEl.appendChild(avgEl);
+  }
+
+  else if(depName=="Marketing")
+  {
+    let tableEl = document.getElementById('Marketing');
+    let trEl = document.createElement('tr');
+    tableEl.appendChild(trEl);
+
+    let numberEl = document.createElement('td');
+    numberEl.textContent =`Number of employess = ${numberMarketing}`;
     trEl.appendChild(numberEl);
- 
-    let drinkPriceEl = document.createElement('td');
-    drinkPriceEl.textContent = this.price;
-    trEl.appendChild(drinkPriceEl);*/
-/////////////////////////////////////////////////////////////////////////////////////////
+  
+    
+    let salaryEl = document.createElement('td');
+    salaryEl.textContent =`Total salary = ${totalMarketing}`;
+    trEl.appendChild(salaryEl);
+  
+    let avgEl = document.createElement('td');
+    avgEl.textContent =`Average salary = ${totalMarketing/numberMarketing}`;
+    trEl.appendChild(avgEl);
+  }
+
+  else if(depName=="Development")
+  {
+    let tableEl = document.getElementById('Development');
+    let trEl = document.createElement('tr');
+    tableEl.appendChild(trEl);
+
+    let numberEl = document.createElement('td');
+    numberEl.textContent =`Number of employess = ${numberDevelopment}`;
+    trEl.appendChild(numberEl);
+  
+    
+    let salaryEl = document.createElement('td');
+    salaryEl.textContent =`Total salary = ${totalDev}`;
+    trEl.appendChild(salaryEl);
+  
+    let avgEl = document.createElement('td');
+    avgEl.textContent =`Average salary = ${totalDev/numberDevelopment}`;
+    trEl.appendChild(avgEl);
+  }
+
+  else if(depName=="Finance")
+  {
+    let tableEl = document.getElementById('Finance');
+    let trEl = document.createElement('tr');
+    tableEl.appendChild(trEl);
+
+    let numberEl = document.createElement('td');
+    numberEl.textContent =`Number of employess = ${numberFinance}`;
+    trEl.appendChild(numberEl);
+  
+    
+    let salaryEl = document.createElement('td');
+    salaryEl.textContent =`Total salary = ${totalFinance}`;
+    trEl.appendChild(salaryEl);
+  
+    let avgEl = document.createElement('td');
+    avgEl.textContent =`Average salary = ${totalFinance/numberFinance}`;
+    trEl.appendChild(avgEl);
+  }
+  
+  
+    let tableEl = document.getElementById('Summation');
+    let trEl = document.createElement('tr');
+    tableEl.appendChild(trEl);
+
+    let numberEl = document.createElement('td');
+    numberEl.textContent =`Number of employess in all departments = ${numberDevelopment+numberAdministration+numberMarketing+numberFinance}`;
+    trEl.appendChild(numberEl);
+  
+    
+    let salaryEl = document.createElement('td');
+    salaryEl.textContent =`Total salary = ${totalDev+totalAdministration+totalFinance+totalMarketing}`;
+    trEl.appendChild(salaryEl);
+  
+    let avgEl = document.createElement('td');
+    avgEl.textContent =`Average salary = ${(totalDev+totalAdministration+totalFinance+totalMarketing)/(numberDevelopment+numberAdministration+numberMarketing+numberFinance)}`;
+    trEl.appendChild(avgEl);
+  
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
