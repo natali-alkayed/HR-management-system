@@ -23,14 +23,14 @@ let depName="";
  {
    for(let i=0;i<retrievedData.length;i++)
    {
-      if (retrievedData[i].Department == '1' || retrievedData[i].Department == 'Administration')
+    
+      if ((retrievedData[i].Department == '1' || retrievedData[i].Department == 'Administration')&& retrievedData[i].salary !=0)
       { numberAdministration+=1;
         totalAdministration+=retrievedData[i].salary; 
         depName="Administration";
-        
       }
 
-      else if (retrievedData[i].Department == '2' || retrievedData[i].Department == 'Marketing')
+      else if ((retrievedData[i].Department == '2' || retrievedData[i].Department == 'Marketing')&& retrievedData[i].salary !=0)
       {
        numberMarketing=+1;
        totalMarketing+=retrievedData[i].salary;
@@ -38,7 +38,7 @@ let depName="";
       }
         
    
-      else if (retrievedData[i].Department == '3' || retrievedData[i].Department == 'Development')
+      else if ((retrievedData[i].Department == '3' || retrievedData[i].Department == 'Development')&& retrievedData[i].salary !=0)
       {
        numberDevelopment+=1;
        totalDev+=retrievedData[i].salary;
@@ -46,16 +46,14 @@ let depName="";
       }
       
    
-      else if (retrievedData[i].Department == '4' || retrievedData[i].Department == 'Finance')
+      else if ((retrievedData[i].Department == '4' || retrievedData[i].Department == 'Finance')&& retrievedData[i].salary !=0)
       { 
         numberFinance+=1;
         totalFinance+=retrievedData[i].salary;
         depName="Finance";
       }    
-     // renderTable(depName);
 
-      
-   }
+    }
   
    renderTable(depName);
 }
