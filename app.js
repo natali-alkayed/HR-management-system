@@ -10,9 +10,8 @@ function EmployeeInfo (FullName,Department,Level,ImageURL)
     this.Department=Department;
     this.Level=Level;
     this.ImageURL=ImageURL;
-    informations.push(this);
+    informations.push(this); 
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////
 myForm.addEventListener('submit',handleSubmit);
 function handleSubmit(event)
@@ -38,31 +37,34 @@ EmployeeInfo.prototype.randomID=function()
 ////////////////////////////////////////////////////////////////////////////////////////
 EmployeeInfo.prototype.Salary=function(Level)
 {let tax =0.075;
+   let min=0;
+   let max=0;
 
  if(Level==1 || Level=="Junior")
- {  let min=1500;
-    let max=2000;
+ {   min=1500;
+     max=2000;
     let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
     this.salary=randomSalary-randomSalary*tax;
  }
 
  else if(Level==2 || Level=="Mid-Senior")
  {
-    let min=1000;
-    let max=1500;
+     min=1000;
+     max=1500;
     let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
     this.salary=randomSalary-randomSalary*tax;
  }
 
  else if(Level==3  || Level=="Senior")
  {
-    let min=500;
-    let max=1000;
+     min=500;
+     max=1000;
     let randomSalary=Math.floor(Math.random() * (max - min + 1) + min);
     this.salary=randomSalary-randomSalary*tax;
  }
 
 }
+
 getData();
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -85,24 +87,45 @@ EmployeeInfo.prototype.render=function()
    trEl.appendChild(IDEl);
 
    let DepEl= document.createElement('p');
-   DepEl.textContent =`Department: ${this.Department}`
-   trEl.appendChild(DepEl);
+   if(this.Department==1 || this.Department=='Administration')
+   {DepEl.textContent =`Department:Administration`
+   trEl.appendChild(DepEl);}
+
+   else if(this.Department==2 || this.Department=='Marketing')
+   {DepEl.textContent =`Department:Marketing`
+   trEl.appendChild(DepEl);}
+
+   else if(this.Department==3 || this.Department=='Development')
+   {DepEl.textContent =`Department:Development`
+   trEl.appendChild(DepEl);}
+
+   else if(this.Department==4 || this.Department=='Finance')
+   {DepEl.textContent =`Department:Finance`
+   trEl.appendChild(DepEl);}
 
    let levEl= document.createElement('p');
-   levEl.textContent =`Level: ${this.Level}`
-   trEl.appendChild(levEl);
+   if(this.Level==1 || this.Level=='Junior' )
+   {levEl.textContent =`Level:Junior`
+   trEl.appendChild(levEl);}
+
+   else if(this.Level==2 || this.Level=='Mid-Senior')
+   {levEl.textContent =`Level:Mid-Senior`
+   trEl.appendChild(levEl);}
+
+   else if(this.Level==3 || this.Level=='Senior')
+   {levEl.textContent =`Level:Senior`
+   trEl.appendChild(levEl);}
 
    let salEl= document.createElement('p');
-   salEl.textContent =`Salary: ${this.salary}`
+   salEl.textContent =`Salary:${this.salary}`
    trEl.appendChild(salEl);
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
-/*for (let i = 0; i < informations.length; i++) {
+for (let i = 0; i < informations.length; i++) {
     informations[i].randomID();
     informations[i].Salary(level);
     informations[i].render();
-}*/
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function saveData(data) {
    let stringifyData = JSON.stringify(data);
@@ -123,7 +146,7 @@ function getData() {
    } 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-let employee1=new EmployeeInfo("Ghazi Samer","Administration","Senior","./assets/employee1.png");
+/*let employee1=new EmployeeInfo("Ghazi Samer","Administration","Senior","./assets/employee1.png");
 employee1.Salary(employee1.Level);
 employee1.randomID(employee1.Level);
 employee1.render();
@@ -157,9 +180,9 @@ employee6.render();
 let employee7=new EmployeeInfo("Hadi Ahmad","Finance","Mid-Senior","./assets/employee1.png");
 employee7.Salary(employee7.Level);
 employee7.randomID(employee7.Level);
-employee7.render();
+employee7.render();*/
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-saveData(informations);
+//saveData(informations);
 console.log(informations);
 
