@@ -32,7 +32,7 @@ let depName="";
 
       else if ((retrievedData[i].Department == '2' || retrievedData[i].Department == 'Marketing')&& retrievedData[i].salary !=0)
       {
-       numberMarketing=+1;
+       numberMarketing+=1;
        totalMarketing+=retrievedData[i].salary;
        depName="Marketing";
       }
@@ -82,21 +82,21 @@ function renderTable (depName)
     avgEl.textContent =`Average salary = ${totalAdministration/numberAdministration}`;
     trEl.appendChild(avgEl);
 //
-    let tableEl1 = document.getElementById('Marketing');
-    let trEl1 = document.createElement('tr');
-    tableEl1.appendChild(trEl1);
+let tableEl1 = document.getElementById('Marketing');
+let trEl1 = document.createElement('tr');
+tableEl1.appendChild(trEl1);
 
-    let numberEl1 = document.createElement('td');
-    numberEl1.textContent =`Number of employess = ${numberMarketing}`;
-    trEl1.appendChild(numberEl1);
-  
-    let salaryEl1 = document.createElement('td');
-    salaryEl1.textContent =`Total salary = ${totalMarketing}`;
-    trEl1.appendChild(salaryEl1);
-  
-    let avgEl1 = document.createElement('td');
-    avgEl1.textContent =`Average salary = ${totalMarketing/numberMarketing}`;
-    trEl1.appendChild(avgEl1);
+let numberEl1 = document.createElement('td');
+numberEl1.textContent =`Number of employess = ${numberMarketing}`;
+trEl1.appendChild(numberEl1);
+
+let salaryEl1 = document.createElement('td');
+salaryEl1.textContent =`Total salary = ${totalMarketing}`;
+trEl1.appendChild(salaryEl1);
+
+let avgEl1 = document.createElement('td');
+avgEl1.textContent =`Average salary = ${totalMarketing/numberMarketing}`;
+trEl1.appendChild(avgEl1);
  //
     let tableEl2 = document.getElementById('Development');
     let trEl2 = document.createElement('tr');
